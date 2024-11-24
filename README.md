@@ -3,7 +3,7 @@ A (simple) script and text based behaviour tree for Godot.
 
 Either create the tree directly:
 
-```
+```GDScript
 _bt = BT.create() \
 	.parallel() \
 		.repeat() \
@@ -21,7 +21,7 @@ _bt = BT.create() \
 
 Or feed a text
 
-```
+```GDScript
  var text := "
  parallel
  	repeat
@@ -41,17 +41,20 @@ games this is usually every frame, but for turn-based games this could be on eac
 Behaviour trees created via text also support variables from the target as arguments. If you want
 these to be updated even after the tree's initialisation, give them a $ prefix (this is probably
 expensive performance-wise, so only use this for testing purposes).
+
 You can also use expressions by using curly braces, for example like this: `{0.5 * _speed}`. The
 expression will be evaluated at initialisation if you don't prefix it with $.
+
 Text-based behaviour trees also support the node `tree`. If it's at the root, it creates a tree.
 If you use `tree '<name>'` inside a tree, it will insert this tree. You can only insert trees defined
 beforehand, preventing circular insertion. For non-text-based trees, use the insert_tree() method.
+
 Composite nodes (more than 0 children):
 * `sequence`
 * `selector`
 * `parallel`
 * `race`
-* `randomizer"
+* `randomizer`
 * `if_else`
 
 Decorator nodes (1 child):
